@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController mainController = ScrollController();
   final ScrollController secondController = ScrollController();
+  bool reverse = false;
+  double previousOffset = 0;
   @override
   void initState() {
     super.initState();
@@ -21,6 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
     mainController.addListener(() {
       if (mainController.hasClients && secondController.hasClients) {
         secondController.jumpTo(mainController.offset);
+        if (mainController.offset > previousOffset) {
+          reverse = true;
+        } else {
+          reverse = false;
+        }
+        setState(() {
+          previousOffset = mainController.offset;
+        });
       }
     });
   }
@@ -35,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const SizedBox(height: 80, child: AnimatedAppBar()),
+              SizedBox(height: 80, child: AnimatedAppBar(reverse: reverse)),
               VerticalList(
                 scrollController: mainController,
               ),

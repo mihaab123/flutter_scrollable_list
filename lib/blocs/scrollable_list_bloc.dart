@@ -9,14 +9,13 @@ part 'scrollable_list_state.dart';
 class ScrollableListBloc
     extends Bloc<ScrollableListEvent, ScrollableListState> {
   ScrollableListBloc() : super(const ScrollableListState()) {
-    on<GetScrollableListEvent>(_mapGetListEventToState);
+    on<ScrollableListEvent>(_mapGetListEventToState);
   }
 
   _mapGetListEventToState(
       ScrollableListEvent event, Emitter<ScrollableListState> emit) async* {
     debugPrint("ScrollableListBloc");
-    // emit(state.copyWith(
-    //     itemsList: List.generate(10000, (index) => ItemModel())));
+
     if (event is GetScrollableListEvent) {
       yield ScrollableListState(
           itemsList:

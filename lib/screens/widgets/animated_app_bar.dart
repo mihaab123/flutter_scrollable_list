@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_scrollable_list/constants/themes.dart';
 import 'package:flutter_scrollable_list/screens/widgets/circle_line_painter.dart';
 
 class AnimatedAppBar extends StatefulWidget {
-  const AnimatedAppBar({Key? key}) : super(key: key);
+  final bool reverse;
+  const AnimatedAppBar({Key? key, required this.reverse}) : super(key: key);
 
   @override
   State<AnimatedAppBar> createState() => _AnimatedAppBarState();
@@ -20,10 +20,14 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 7),
+      duration: const Duration(seconds: 1),
     );
 
-    _animationController.repeat();
+    if (!widget.reverse) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
   }
 
   @override
@@ -35,6 +39,11 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
   @override
   Widget build(BuildContext context) {
     final rotationTween = Tween<double>(begin: 0.0, end: 2 * pi);
+    if (!widget.reverse) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -43,7 +52,7 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
               animation: _animationController,
               builder: (BuildContext context, Widget? child) {
                 return Transform(
-                  origin: const Offset(-48, 5),
+                  origin: const Offset(-40, 5),
                   transform: Matrix4.identity()
                     ..rotateZ(
                         rotationTween.transform(_animationController.value)),

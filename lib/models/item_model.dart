@@ -42,7 +42,7 @@ class ItemModel {
   String toJson() => json.encode(toMap());
 
   factory ItemModel.fromJson(String source) =>
-      ItemModel.fromMap(json.decode(source)["data"] as Map<String, dynamic>);
+      ItemModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() =>
@@ -61,5 +61,12 @@ class ItemModel {
   int get hashCode => id.hashCode ^ name.hashCode ^ description.hashCode;
 }
 
-String MockData = Uri.decodeComponent(
-    '{data: "%7B%0A%20%20%20%20id%3A%20u64%2C%0A%20%20%20%20name%3A%20TestName%2C%0A%20%20%20%20description%3ADescription%20so%20long%20as%20possible%20in%20json%20but%20not%20her...%0A%7D"}');
+String MockData = ItemModel(
+        id: "u64",
+        name: "TestName",
+        description: "Description so long as possible in json but not her...")
+    .toJson()
+    .toString();
+    // '{data: "{id: "u64",name: "TestName",description:"Description so long as possible in json but not her..."}"}';
+// Uri.decodeComponent(
+//     '{data: "%7B%0A%20%20%20%20id%3A%20u64%2C%0A%20%20%20%20name%3A%20TestName%2C%0A%20%20%20%20description%3ADescription%20so%20long%20as%20possible%20in%20json%20but%20not%20her...%0A%7D"}');
