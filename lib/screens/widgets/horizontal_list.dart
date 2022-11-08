@@ -6,7 +6,9 @@ import 'package:flutter_scrollable_list/blocs/scrollable_list_bloc.dart';
 import 'package:flutter_scrollable_list/constants/themes.dart';
 
 class HorizontalList extends StatelessWidget {
-  const HorizontalList({Key? key}) : super(key: key);
+  final ScrollController scrollController;
+  const HorizontalList({Key? key, required this.scrollController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class HorizontalList extends StatelessWidget {
         height: 40,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
+            controller: scrollController,
             shrinkWrap: true,
             itemCount: 100,
             itemBuilder: (BuildContext ctxt, int index) {

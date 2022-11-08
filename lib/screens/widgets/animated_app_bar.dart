@@ -49,10 +49,6 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
                         rotationTween.transform(_animationController.value)),
                   child: child,
                 );
-                // return Transform.rotate(
-                //   angle: _animationController.value * 6.3,
-                //   child: child,
-                // );
               },
               child: CustomPaint(
                 painter: CircleLinePainter(),

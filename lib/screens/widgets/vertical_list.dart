@@ -7,13 +7,16 @@ import 'package:flutter_scrollable_list/models/item_model.dart';
 import 'package:flutter_scrollable_list/screens/widgets/vertical_list_item.dart';
 
 class VerticalList extends StatelessWidget {
-  const VerticalList({Key? key}) : super(key: key);
+  final ScrollController scrollController;
+  const VerticalList({Key? key, required this.scrollController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ScrollableListBloc, ScrollableListState>(
         builder: (context, state) {
       return ListView.builder(
+          controller: scrollController,
           shrinkWrap: true,
           itemCount: 5,
           itemBuilder: (BuildContext ctxt, int index) {
