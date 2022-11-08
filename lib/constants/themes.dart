@@ -4,7 +4,7 @@ class AppThemes {
   Color colorWhite = Colors.white;
   Color colorGreen = Colors.green;
   Color colorBlack = Colors.black;
-  Color colorGrey = Colors.grey;
+  Color colorGrey = const Color.fromRGBO(217, 217, 217, 1);
   TextStyle mainTextStyle = const TextStyle(
       color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400);
   TextStyle greenTextStyle = const TextStyle(

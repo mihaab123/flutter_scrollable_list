@@ -13,22 +13,17 @@ class VerticalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ScrollableListBloc, ScrollableListState>(
         builder: (context, state) {
-      return Container(
-        color: Colors.black,
-        child: Expanded(
-          child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 100,
-              itemBuilder: (BuildContext ctxt, int index) {
-                return VerticalListItem(
-                  item: ItemModel(
-                      id: "dd",
-                      name: "dddd",
-                      description: "dfsdfsd sdfsdfs"), //state.itemsList[index],
-                );
-              }),
-        ),
-      );
+      return ListView.builder(
+          shrinkWrap: true,
+          itemCount: 5,
+          itemBuilder: (BuildContext ctxt, int index) {
+            return VerticalListItem(
+              item: ItemModel(
+                  id: "dd",
+                  name: "dddd",
+                  description: "dfsdfsd sdfsdfs"), //state.itemsList[index],
+            );
+          });
     });
   }
 }
