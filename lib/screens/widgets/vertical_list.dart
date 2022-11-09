@@ -22,10 +22,10 @@ class VerticalList extends StatelessWidget {
         child: ListView.builder(
             controller: scrollController,
             shrinkWrap: true,
-            itemCount: 100,
+            itemCount: state.itemsList.length,
             itemBuilder: (BuildContext context, int index) {
               return VerticalListItem(
-                item: ItemModel.fromJson(MockData),
+                item: state.itemsList[index],
               );
             }),
       );

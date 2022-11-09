@@ -13,13 +13,13 @@ class ScrollableListBloc
   }
 
   _mapGetListEventToState(
-      ScrollableListEvent event, Emitter<ScrollableListState> emit) async* {
+      ScrollableListEvent event, Emitter<ScrollableListState> emit) async {
     debugPrint("ScrollableListBloc");
 
     if (event is GetScrollableListEvent) {
-      yield ScrollableListState(
+      emit(ScrollableListState(
           itemsList:
-              List.generate(10000, (index) => ItemModel.fromJson(MockData)));
+              List.generate(10000, (index) => ItemModel.fromJson(MockData))));
     }
   }
 }

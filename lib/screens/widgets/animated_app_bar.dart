@@ -5,7 +5,9 @@ import 'package:flutter_scrollable_list/screens/widgets/circle_line_painter.dart
 
 class AnimatedAppBar extends StatefulWidget {
   final bool reverse;
-  const AnimatedAppBar({Key? key, required this.reverse}) : super(key: key);
+  final double value;
+  const AnimatedAppBar({Key? key, required this.reverse, required this.value})
+      : super(key: key);
 
   @override
   State<AnimatedAppBar> createState() => _AnimatedAppBarState();
@@ -54,8 +56,7 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
                 return Transform(
                   origin: const Offset(-40, 5),
                   transform: Matrix4.identity()
-                    ..rotateZ(
-                        rotationTween.transform(_animationController.value)),
+                    ..rotateZ(rotationTween.transform(widget.value)),
                   child: child,
                 );
               },

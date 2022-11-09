@@ -20,7 +20,7 @@ class HorizontalList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             controller: scrollController,
             shrinkWrap: true,
-            itemCount: 100,
+            itemCount: state.itemsList.length,
             itemBuilder: (BuildContext ctxt, int index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
